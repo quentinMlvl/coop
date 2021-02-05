@@ -3,7 +3,7 @@
         <h1>{{ conversation.label }}</h1>
         <p>Sujet : {{ conversation.topic }}</p>
 
-        <section>
+        <section class="messages">
             <div v-for="message in messages">
                 <Message :message="message" />
             </div>
@@ -69,6 +69,16 @@
 
 <style lang="scss" scoped>
 .conversation {
+
+    .messages{
+        display: flex;
+        width: 90vw;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: .4rem;
+        border: 0.2rem solid #9b4dca;
+        border-radius: .4rem;
+    }
 
     form {
     position: absolute;

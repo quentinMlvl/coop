@@ -43,6 +43,9 @@
     border: 0.2rem solid #9b4dca;
     border-radius: .4rem;
 
+    max-width: 45vw;
+    margin-bottom: 1rem;
+
     footer{
         display: flex;
         justify-content: space-between;
@@ -52,5 +55,6 @@
 .you {
     background-color: #aaa;
     color: black;
+    margin-left: auto;
 }
 </style>
