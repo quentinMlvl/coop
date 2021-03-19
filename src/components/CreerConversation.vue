@@ -45,6 +45,8 @@
             masquerFormulaire(){
                 this.afficher =false
             },
+
+            // Ajoute la conversation du formulaire à l'API puis redirige vers la page de cette conversation 
             creerConversation(){
                 api.post('channels', {
                     label: this.label,
@@ -67,7 +69,7 @@
 
     & > section{
         padding: .4rem;
-        border: 0.2rem solid #3cc5e7;
+        border: 0.2rem solid #16b4db;
         border-radius: .4rem;
 
         

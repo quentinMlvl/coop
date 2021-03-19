@@ -1,19 +1,16 @@
-# coop
+# Login Utilisateurs : 
 
-## Project setup
-```
-npm install
-```
+## Utilisateur test (Par défaut sur le formulaire de connexion)
+* email: test@test.fr
+* mot de passe : test
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Utilisateur test2
+* email: test2@test.fr
+* mot de passe : test2
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Utilisateur test3
+* email: test3@test.fr
+* mot de passe : test3
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Remarque 
+Sur une page de conversation, il se peut que le scroll ne se déclenche pas. Dans ce cas, réactualisez la page ou scrollez jusqu'au bas de la conversation

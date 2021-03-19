@@ -25,9 +25,5 @@ export default {
     CreerConversation,
     Conversation,
   }
-
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -37,6 +37,8 @@ export default {
       this.$store.commit('seDeconnecter');
       this.$router.push('/se-connecter');
     },
+
+    // Stock le membre connecté dans le store
     setMembreConnecte(){
       if(this.$store.state.membre) {
         this.membreConnecte = this.$store.state.membre
@@ -45,6 +47,8 @@ export default {
     }
   },
   watch: {
+    // Vérifie le statut de l'utilisateur à chaque changement de page
+    // Évite d'avoir le header d'un utilisateur non connecté alors qu'il l'est et inversement
     $route(){
       this.setMembreConnecte();
     }

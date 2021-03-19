@@ -35,6 +35,10 @@
             }
         },
         methods: {
+
+            // Ajoute un nouveau membre 
+            // Après avoir vérifier s'il avait confirmer son mot de passe (Sinon il doit re-rentrer un mot de passe et le confirmer)
+            // Puis le redirige vers la page de connexion
             creerCompte() {
 
                 if (this.password == this.confirmPassword) {

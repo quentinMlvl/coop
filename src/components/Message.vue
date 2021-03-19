@@ -14,7 +14,7 @@
         </main>
         <main v-else>
             <p>{{ message.message }}</p>
-            <div class="editionButton" v-if="membre.id == $store.state.membre.id" @click="isEditing=message.id">📝</div>
+            <div class="editionButton" v-if="membre.id == $store.state.membre.id" @click="editionButtonClicked">📝</div>
         </main>
         <hr/>
         <footer>
@@ -58,15 +58,15 @@
             this.membre = this.$store.getters.getMembre(this.message.member_id);
             this.iconUrl = "https://avatars.dicebear.com/api/identicon/"+this.membre.id+".svg";
 
-            if(this.route == "Membre"){
-                this.isInMembre = true;
-            }   
-            if(this.membre.id == this.$store.state.membre.id){
-                this.membreConnecte = true
-            }
+            // Permet de vérifier si on situe sur une page Membre ou une page Conversation 
+            // (Sert surtout pour gérer l'affichge) 
+            if(this.route == "Membre") this.isInMembre = true;
+            if(this.membre.id == this.$store.state.membre.id) this.membreConnecte = true;
 
         },
         methods: {
+
+            // Modifie le message
             modifierMessage(){
 
                 api.put("channels/"+this.convId+"/posts/"+this.message.id, {
@@ -77,6 +77,7 @@
                 )
             },
 
+            // Supprime le message
             supprMessage(){
                 if(confirm("Êtes-vous sûr de vouloir supprimer le message ?")){
                     api.delete("channels/"+this.convId+"/posts/"+this.message.id).then(
@@ -84,6 +85,12 @@
                         this.isEditing = false,
                     );
                 };
+            },
+
+            editionButtonClicked(){
+                this.isEditing = this.message.id;
+                this.$bus.$emit('scroll-bottom');
+
             }
 
         }
@@ -94,7 +101,7 @@
 .message{
     
     padding: 1rem;
-    border: 0.2rem solid #3cc5e7;
+    border: 0.2rem solid #16b4db;
     border-radius: .4rem;
 
     width: 55%;
@@ -138,7 +145,7 @@
 
                 & button {
                     max-width: 45%;
-                    color: #3cc5e7;
+                    color: #16b4db;
 
                     &:hover, &:focus, &:active{
                         color: rgb(61, 61, 61);
@@ -157,7 +164,7 @@
 
     hr{
         margin: .5rem auto;
-        border-color: #3cc5e7;
+        border-color: #16b4db;
     }
 
     .membreInfo {
@@ -182,7 +189,7 @@
     main, footer {
         justify-content: flex-end;
     }
-    background-color: #3cc5e7;
+    background-color: #16b4db;
     color: white;
     margin-left: auto;
     hr {

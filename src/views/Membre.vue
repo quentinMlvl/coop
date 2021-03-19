@@ -40,9 +40,12 @@
         },
         created(){
             if(this.id) {
+
+                //Récupère les données du membre 
                 this.membre = this.$store.getters.getMembre(this.id);
                 this.iconUrl = "https://avatars.dicebear.com/api/identicon/"+this.membre.id+".svg";
 
+                // Récupère les 10 derniers messages du membre
                 let compteurMessage=0;
                 this.$store.state.conversations.forEach(conversation => {
                     api.get('channels/' + conversation.id + '/posts').then(response => {
@@ -85,10 +88,10 @@
 .messages > *{
 
     color: white;
-    background-color: #3cc5e7;
+    background-color: #16b4db;
     
     padding: 1rem;
-    border: 0.2rem solid #3cc5e7;
+    border: 0.2rem solid #16b4db;
     border-radius: .4rem;
 
     margin-bottom: 1rem;

@@ -28,6 +28,10 @@
             }
         },
         methods: {
+
+            // Permet à l'utilisateur de se connecter à l'application
+            // Si il réussit, il est redirigé vers la page Home
+            // Sinon, il est alerté et il doit réessayer 
             seConnecter() {
                 api.post('members/signin', {
                     email : this.email,
@@ -36,6 +40,9 @@
                     this.$store.commit('setMembre', response.data.member);
                     this.$store.commit('setToken', response.data.token);
                     this.$router.push('/');
+                }).catch(error => {
+                    alert("Mauvais identifiant et/ou Mot de passe. Veuillez réessayer");
+                    this.password = '';
                 })
             }
         },

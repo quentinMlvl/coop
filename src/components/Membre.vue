@@ -30,11 +30,14 @@
             }
         },
         mounted(){
+            // Vérifie si le membre est celui qui est connecté
             if(this.membre.id == this.$store.state.membre.id){
                 this.isNotConnected = false
             }
         },
         methods:{
+
+            // Permet de supprimer le membre
             supprimerMembre(){
                 if(confirm("Voulez-vous supprimer le membre " + this.membre.fullname)){
                     api.delete('members/'+this.membre.id).then(

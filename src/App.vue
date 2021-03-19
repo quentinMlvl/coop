@@ -22,17 +22,23 @@ export default {
     };
   },
   watch: {
+
+    //Chargement des membres et des conversations à chaque changement de page
     $route() {
       this.chargerMembres();
       this.chargerChannels();
     },
   },
   methods: {
+
+    // Récupération des conversations depuis l'API vers le store
     chargerChannels() {
       api.get("channels").then((reponse) => {
         this.$store.commit("setConversations", reponse.data);
       });
     },
+    
+    // Récupération des membres depuis l'API vers le store
     chargerMembres() {
       api.get("members").then((reponse) => {
         this.$store.commit("setMembres", reponse.data);
@@ -48,6 +54,7 @@ export default {
     this.$bus.$on("charger-conversations", this.chargerChannels);
     this.$bus.$on("charger-membres", this.chargerMembres);
 
+    // Si l'utilisateur n'est pas connecté, il n'accès qu'au page de connexion et de création de compte 
     if (!this.$store.state.membre) {
       if (
         this.$route.path != "/se-connecter" &&
@@ -83,4 +90,5 @@ export default {
     display: flex;
   }
 }
+
 </style>

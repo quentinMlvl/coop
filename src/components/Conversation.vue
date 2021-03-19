@@ -10,7 +10,3 @@
         props: ["conversation"]
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

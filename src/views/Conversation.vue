@@ -69,6 +69,8 @@
         },
         components: { Message },
         methods: {
+
+            // Ajoute un message à la conversation 
             creerMessage(){
                 api.post('channels/'+ this.id +'/posts', {
                     membre_id: this.$store.state.membre.id,
@@ -76,9 +78,11 @@
                 }).then(
                     this.formMessage = '',
                     this.chargerMessages(),
+                    this.scrollToBottom(),
                 )
             },
 
+            // Récupère les données de la conversation
             getConversation() {
                 api.get('channels/' + this.id).then(response => {
                     this.conversation = response.data
@@ -87,12 +91,14 @@
                 });
             },
 
+            // Récupère les messages de la conversation
             chargerMessages(){
                 api.get('channels/'+ this.id +'/posts').then(response => {
                     this.messages = this.$store.getters.sortByDate(response.data);
                 })
             },
 
+            // Modifier le topic et le label de la conversation
             modifierConversation(){
                 api.put("channels/"+this.id, {
                     label: this.formLabel,
@@ -104,6 +110,7 @@
                 )
             },
 
+            // Supprime une conversation et redirige vers la page Home
             supprConversation(){
                 if(confirm("Êtes-vous sûr de vouloir supprimer la conversation ?")){
                     api.delete("channels/"+this.id).then(
@@ -111,6 +118,16 @@
                         this.isEditing = false,
                     );
                 };   
+            },
+
+            // Permet d'aller en bas des messages ( == aller aux derniers messages) avec un effet de scroll
+            scrollToBottom(){
+                let element = document.querySelector('#listMessages')
+                element.scrollTop = element.scrollHeight;
+                setTimeout(function(){ element.scrollTo({
+                    top:element.scrollHeight,
+                    behavior: 'smooth'
+                }) }, 250);
             }
         },
         mounted(){
@@ -118,14 +135,11 @@
             this.chargerMessages();
 
             this.$bus.$on('charger-messages', this.chargerMessages);
+            this.$bus.$on('scroll-bottom', this.scrollToBottom);
+
+            this.scrollToBottom();
 
 
-            let element = document.querySelector('#listMessages')
-            element.scrollTop = element.scrollHeight;
-            setTimeout(function(){ element.scrollTo({
-                top:element.scrollHeight,
-                behavior: 'smooth'
-            }) }, 250);
 
         },
     }
@@ -138,7 +152,7 @@
 
     .messages{
         overflow-y: scroll;
-        border: 0.2rem solid #3cc5e7;
+        border: 0.2rem solid #16b4db;
 
         .messagesContainer{
             display: flex;
