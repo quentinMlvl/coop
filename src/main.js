@@ -7,8 +7,8 @@ import miligram from 'milligram'
 
 
 window.api = axios.create({
-  baseURL: 'https://tools.sopress.net/iut/coop/api',
-  headers: { Authorization: '3b5286b512844092ef2ad7c2d256073d6a64f069' }
+  baseURL: 'https://allweb.fun/coop/api',
+  headers: { Authorization: 'a3d06b8fb2acb4f80bfbc3ed1e2b65d994267a07' }
 });
 Vue.config.productionTip = false
 

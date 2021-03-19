@@ -52,6 +52,7 @@
                 }).then(response => {
                     this.masquerFormulaire();
                     this.$bus.$emit('charger-conversations');
+                    this.$router.push({ name: 'Conversation', params: { id: response.data.id }});
                 })
             }
         }

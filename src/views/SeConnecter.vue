@@ -2,12 +2,18 @@
     <div class="column column-33 column-offset-33">
         <h1>Se connecter</h1>
 
-        <div>todo formulaire</div>
+        <h3>Entrez votre email et votre mot de passe</h3>
         <form @submit.prevent="seConnecter" class="row">
             <fieldset>
                 <input type="email" v-model="email" placeholder="Mail" required/>
-                <input type="password" v-model="password" placeholder="motdepasse" required/>
-                <button type="submit">Connection</button> 
+                <input type="password" v-model="password" placeholder="Mot de passe" required/>
+                
+                <div class="buttons">
+                    <button type="submit">Connexion</button>
+                    <router-link to="/creer-compte">Pas de compte ?</router-link>
+                </div>
+
+
             </fieldset>
         </form>
     </div>
@@ -40,5 +46,10 @@
 <style lang="scss" scoped>
 fieldset {
     width: 100%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
 }
 </style>

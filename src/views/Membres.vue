@@ -6,9 +6,7 @@
 
         <ul>
             <li v-for="membre in this.$store.state.membres">
-                <router-link :to="{ name: 'Membre', params: { id: membre.id }}">
                 <Membre :membre="membre" />
-                </router-link>
             </li>
 
         </ul>

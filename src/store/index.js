@@ -32,11 +32,26 @@ export default new Vuex.Store({
     seDeconnecter(state){
       state.membre = false;
       state.token = false;
-    }
+    },
   },
   getters: {
     getMembre: (state) => (id) => {
       return state.membres.find(membre => membre.id == id);
+    },
+    dateFormatter: (state) => (date) => {
+      let options = {weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric'};
+      let dateFormatee = new Date(date).toLocaleDateString('fr-FR', options);
+      return dateFormatee;
+    },
+    sortByDate: (state) => (messages) => {
+        return messages.sort((a, b)=> {
+          if (a.created_at > b.created_at ){
+            return 1;
+          }
+          if(a.created_at < b.created_at){
+            return 0;
+          };
+        });
     }
   },
   actions: {
