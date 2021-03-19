@@ -94,11 +94,10 @@
 .message{
     
     padding: 1rem;
-    border: 0.2rem solid #9b4dca;
+    border: 0.2rem solid #3cc5e7;
     border-radius: .4rem;
 
-    width: fit-content;
-    max-width: 60%;
+    width: 55%;
     margin-bottom: 1rem;
 
     main{
@@ -139,7 +138,7 @@
 
                 & button {
                     max-width: 45%;
-                    color: #9b4dca;
+                    color: #3cc5e7;
 
                     &:hover, &:focus, &:active{
                         color: rgb(61, 61, 61);
@@ -158,7 +157,7 @@
 
     hr{
         margin: .5rem auto;
-        border-color: #9b4dca;
+        border-color: #3cc5e7;
     }
 
     .membreInfo {
@@ -183,7 +182,7 @@
     main, footer {
         justify-content: flex-end;
     }
-    background-color: #9b4dca;
+    background-color: #3cc5e7;
     color: white;
     margin-left: auto;
     hr {
@@ -208,7 +207,7 @@ a:focus {
 }
 
 .isInMembre {
-    max-width: auto;
+    width: 100%;
 }
 
 </style>

@@ -138,7 +138,7 @@
 
     .messages{
         overflow-y: scroll;
-        border: 0.2rem solid #9b4dca;
+        border: 0.2rem solid #3cc5e7;
 
         .messagesContainer{
             display: flex;

@@ -36,13 +36,21 @@ export default {
     seDeconnecter(){
       this.$store.commit('seDeconnecter');
       this.$router.push('/se-connecter');
+    },
+    setMembreConnecte(){
+      if(this.$store.state.membre) {
+        this.membreConnecte = this.$store.state.membre
+        this.iconUrl = "https://avatars.dicebear.com/api/identicon/"+this.membreConnecte.id+".svg"
+      }else this.membreConnecte = null;
+    }
+  },
+  watch: {
+    $route(){
+      this.setMembreConnecte();
     }
   },
   mounted(){
-    if(this.$store.state.membre) {
-      this.membreConnecte = this.$store.state.membre
-      this.iconUrl = "https://avatars.dicebear.com/api/identicon/"+this.membreConnecte.id+".svg"
-    }
+    this.setMembreConnecte();
   }
 }
 </script>

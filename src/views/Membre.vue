@@ -85,10 +85,10 @@
 .messages > *{
 
     color: white;
-    background-color: #9b4dca;
+    background-color: #3cc5e7;
     
     padding: 1rem;
-    border: 0.2rem solid #9b4dca;
+    border: 0.2rem solid #3cc5e7;
     border-radius: .4rem;
 
     margin-bottom: 1rem;
